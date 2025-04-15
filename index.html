@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fotos do Evento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body { text-align: center; font-family: sans-serif; }
+      video, canvas { width: 100%; max-width: 500px; }
+      button { font-size: 18px; padding: 10px 20px; margin-top: 10px; }
+    </style>
+  </head>
+  <body>
+    <h2>TIRE SUA FOTO AQUI 📸</h2>
+    <video id="video" autoplay playsinline></video><br>
+    <button id="snap">Tirar Foto</button><br>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <p id="status"></p>
+
+    <script>
+      const video = document.getElementById('video');
+      const canvas = document.getElementById('canvas');
+      const context = canvas.getContext('2d');
+      const snapBtn = document.getElementById('snap');
+      const statusText = document.getElementById('status');
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyXCJcGgxlIinE_JVjQFfzwQ70TL5b9ZxNT3eTDJAz4H7ZLEE9j9At6bKVPPr1vklbE/exec';
+
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => video.srcObject = stream);
+
+      snapBtn.onclick = () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0);
+        const image = canvas.toDataURL('image/png');
+
+        statusText.textContent = "Enviando foto...";
+
+        fetch(scriptURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'image=' + encodeURIComponent(image)
+        })
+        .then(res => res.text())
+        .then(msg => statusText.textContent = msg)
+        .catch(err => statusText.textContent = 'Erro ao enviar: ' + err);
+      };
+    </script>
+  </body>
+</html>
