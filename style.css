@@ -150,20 +150,26 @@
   cursor: pointer;
 }
 .camera-controls button:hover {
-  background-color: #132f65;
+  background-color: #3a6ed5;
 }
 
 /* ===== Preview de Foto ===== */
 #closePreviewBtn {
   position: absolute;
   top: 10px;
-  right: 15px;
+  right: 10px;
   font-size: 30px;
-  color: #908e93;
+  color: #fff;
+  background-color: #1948a0;
+  border-radius: 8px;
+  padding: 16px;
   cursor: pointer;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 #closePreviewBtn:hover {
-  color: #000;
+  background-color: #3a6ed5;
 }
 #previewImage {
   max-width: 100%;
