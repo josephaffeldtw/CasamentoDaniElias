@@ -141,7 +141,7 @@
   border-radius: 8px;
   text-align: center;
   width: 90%;
-  max-height: 85vh;
+  max-height: 80vh;
   overflow-y: auto;
   position: relative;
 }
