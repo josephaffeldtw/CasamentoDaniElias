@@ -17,39 +17,41 @@
       <div class="bg-section bg-two"></div>
   </div>
   <!-- Título/Hashtag em destaque -->
-  <div class="conteudo-site">
-    <header>
-      <h1 class="hashtag">#CasamentoDani&amp;Elias</h1>
-      <p class="frase-romantica">"Deixe aqui seu registro dos momentos lindos que vivemos juntos nessa festa!"</p>
-    </header>
-  
-    <!-- Botões de ação: Upload e Tirar Foto -->
-    <div class="acoes">
-      <button id="uploadBtn">Fazer Upload</button>
-      <button id="cameraBtn">Tirar Foto</button>
-      <!-- Input de arquivo oculto para upload de fotos/vídeos -->
-      <input type="file" id="fileInput" accept="image/*,video/*" style="display: none;">
-    </div>
-  
-    <!-- Modal de câmera (captura de foto) -->
-    <div id="cameraModal" class="modal">
-      <div class="modal-content">
-        <video id="video" autoplay playsinline></video>
-        <input type="range" id="zoomSlider" style="display:none;">
-        <div class="camera-controls">
-          <button id="switchCameraBtn">Alternar Câmera</button>
-          <button id="takePhotoBtn">📸 Capturar</button>
-          <button id="closeCameraBtn">Fechar</button>
+  <div class="conteudo-wrapper">
+    <div class="conteudo-site">
+      <header>
+        <h1 class="hashtag">#CasamentoDani&amp;Elias</h1>
+        <p class="frase-romantica">"Deixe aqui seu registro dos momentos lindos que vivemos juntos nessa festa!"</p>
+      </header>
+    
+      <!-- Botões de ação: Upload e Tirar Foto -->
+      <div class="acoes">
+        <button id="uploadBtn">Fazer Upload</button>
+        <button id="cameraBtn">Tirar Foto</button>
+        <!-- Input de arquivo oculto para upload de fotos/vídeos -->
+        <input type="file" id="fileInput" accept="image/*,video/*" style="display: none;">
+      </div>
+    
+      <!-- Modal de câmera (captura de foto) -->
+      <div id="cameraModal" class="modal">
+        <div class="modal-content">
+          <video id="video" autoplay playsinline></video>
+          <input type="range" id="zoomSlider" style="display:none;">
+          <div class="camera-controls">
+            <button id="switchCameraBtn">Alternar Câmera</button>
+            <button id="takePhotoBtn">📸 Capturar</button>
+            <button id="closeCameraBtn">Fechar</button>
+          </div>
         </div>
       </div>
-    </div>
-  
-    <!-- Modal de pré-visualização da foto enviada -->
-    <div id="previewModal" class="modal">
-      <div class="modal-content">
-        <span id="closePreviewBtn">&times;</span>
-        <img id="previewImage" alt="Prévia da foto">
-        <a id="downloadPhotoBtn" href="#" download>Baixar Foto</a>
+    
+      <!-- Modal de pré-visualização da foto enviada -->
+      <div id="previewModal" class="modal">
+        <div class="modal-content">
+          <span id="closePreviewBtn">&times;</span>
+          <img id="previewImage" alt="Prévia da foto">
+          <a id="downloadPhotoBtn" href="#" download>Baixar Foto</a>
+        </div>
       </div>
     </div>
   </div>
