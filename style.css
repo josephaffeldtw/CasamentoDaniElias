@@ -7,7 +7,6 @@
   z-index: -1;
   display: flex;
   flex-direction: column;
-  padding: 20px;
 }
 
 .bg-section {
@@ -24,13 +23,23 @@
   background-image: url("images/dani-elias-two.jpeg");
 }
 
-/* Garante que o conteúdo fique acima do fundo */
-.conteudo-site {
+/* Envolve o conteúdo e centraliza tudo na tela */
+.conteudo-wrapper {
+  display: flex;
+  align-items: center;      /* vertical */
+  justify-content: center;  /* horizontal */
+  height: 100vh;
+  width: 100%;
   position: relative;
   z-index: 10;
-  max-width: 600px;     
-  margin: 0 auto;          
   padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Mantém leitura boa */
+.conteudo-site {
+  max-width: 600px;
+  width: 100%;
   text-align: center;
 }
 
