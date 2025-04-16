@@ -153,6 +153,11 @@ function setupZoomSlider(stream) {
 
 // Envia um arquivo (foto ou vídeo) para o Apps Script (Google Drive/Planilha)
 function sendFile(file) {
+  if (file.size > 25 * 1024 * 1024) { // 25MB
+    toastr.error('Vídeo muito grande. Tente enviar um arquivo menor que 25MB.');
+    return;
+  }
+
   const reader = new FileReader();
   reader.onload = function(event) {
     const dataUrl = event.target.result;
