@@ -153,30 +153,35 @@ function setupZoomSlider(stream) {
 
 // Envia um arquivo (foto ou vídeo) para o Apps Script (Google Drive/Planilha)
 function sendFile(file) {
-  const formData = new FormData();
-  formData.append('file', file, file.name);
-  $.ajax({
-    url: scriptURL,
-    method: 'POST',
-    data: formData,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-      console.log('Upload realizado com sucesso:', response);
-      // Notificação de sucesso (mensagem varia conforme tipo do arquivo)
-      toastr.success(file.type.startsWith('image/') ? 'Foto enviada com sucesso!' : 'Vídeo enviado com sucesso!');
-      if (file.type.startsWith('image/')) {
-        // Se o upload for de uma foto, exibe o modal de pré-visualização
-        showPreview(file);
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const dataUrl = event.target.result;
+    const base64Data = dataUrl.split(',')[1]; // remove o prefixo data:image/png;base64,...
+    
+    $.ajax({
+      url: scriptURL,
+      method: 'POST',
+      data: {
+        filename: file.name,
+        mimeType: file.type,
+        file: base64Data
+      },
+      success: function(response) {
+        console.log('Upload realizado com sucesso:', response);
+        toastr.success(file.type.startsWith('image/') ? 'Foto enviada com sucesso!' : 'Vídeo enviado com sucesso!');
+        if (file.type.startsWith('image/')) {
+          showPreview(file);
+        }
+      },
+      error: function(error) {
+        console.error('Erro no upload:', error);
+        toastr.error('Erro ao enviar arquivo. Por favor, tente novamente.');
       }
-      // (Para vídeos, apenas a notificação é exibida)
-    },
-    error: function(error) {
-      console.error('Erro no upload:', error);
-      toastr.error('Erro ao enviar arquivo. Por favor, tente novamente.');
-    }
-  });
+    });
+  };
+  reader.readAsDataURL(file); // dispara o onload acima
 }
+
 
 // Exibe o modal de pré-visualização com a imagem enviada
 function showPreview(file) {
