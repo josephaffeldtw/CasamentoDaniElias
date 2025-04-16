@@ -1,5 +1,5 @@
 // URL do Google Apps Script para receber os uploads (insira a sua URL do Web App do Apps Script)
-const scriptURL = "https://script.google.com/macros/s/AKfycbxB7bIoqTRzTQhivTpRPrjPs1gqPe5KKyOra483S7MmWIJF2_7-ZFZ3zegIHYS_5kqg/exec"; // TODO: substituir pela URL do seu script
+const scriptURL = "https://script.google.com/macros/s/AKfycby3LSG3YFFEDtFErlfIzWIp0PPqGHewAxfwgQqzMLhLFtwm219MpM4Uh9L8lUhehInm-g/exec"; // TODO: substituir pela URL do seu script
 
 let currentStream = null;
 let currentFacing = 'environment'; // câmera atual (padrão traseira)
