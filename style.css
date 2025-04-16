@@ -1,9 +1,6 @@
 /* Estilos gerais */
 body {
-  background-image: 
-    url("images/dani-elias-two.jpeg"),
-    url("images/fundo-casamento.png"),
-    url("images/dani-elias-one.jpeg");
+  background-image:url("images/dani-elias-one.jpeg");
   background-repeat: no-repeat;
   background-size: 100% 33.333%;
   background-position: bottom, center, top;
